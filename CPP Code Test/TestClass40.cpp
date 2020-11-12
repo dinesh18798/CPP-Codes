@@ -31,3 +31,8 @@ bool isTreeSymmetric(Tree<int> *t)
 {
     return isMirror(t, t);
 }
+
+int main()
+{
+    Tree<int> *t = new Tree<int>(3);
+}
