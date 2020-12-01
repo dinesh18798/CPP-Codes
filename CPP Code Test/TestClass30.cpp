@@ -6,24 +6,43 @@
 #include <cassert>
 using namespace std;
 
-int makeArrayConsecutive2(vector<int> statues)
+class Node
 {
-    vector<int> needed;
-    sort(statues.begin(), statues.end());
+public:
+    int value;
+    Node *left;
+    Node *right;
 
-    for (int i = statues[0] + 1; i < statues[statues.size() - 1]; ++i)
+    //! This method returns a pointer to the node with the given​​​​​​‌​​​‌‌‌‌​​‌​‌​‌‌​‌​‌​‌​‌‌ value.
+    Node *find(int v)
     {
-        if (find(statues.begin(), statues.end(), i) == statues.end())
+        if (value == v)
+            return this;
+        if (value > v)
         {
-            needed.push_back(i);
+            if (this->left)
+                return this->left->find(v);
         }
+        else if (value < v)
+        {
+            if (this->right)
+                return this->right->find(v);
+        }
+        Node *r = new Node();
+        r->value = 0;
+        return r;
     }
-    return needed.size();
-}
+};
 
 int main(void)
 {
-    vector<int> numbers = {6, 2, 3, 8};
-    makeArrayConsecutive2(numbers);
-    return 1;
+    Node *n = new Node();
+    n->value = 9;
+    n->left = new Node();
+    n->left->value = 7;
+    n->left->right = new Node();
+    n->left->right->value = 8;
+
+    Node *a = n->find(0);
+    cout << a->value << endl;
 }

@@ -22,7 +22,7 @@ int numbersOfA(string str)
             ++countOfA;
     }
 
-    return (4 + (str.size() - countOfA - 1) * 2 - countOfA);
+    return (1 + str.size() - countOfA) * 2 - countOfA;
 }
 
 int main()

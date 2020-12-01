@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-struct Base
+class Base
 {
+public:
     Base()
     {
         cout << "base" << endl;
